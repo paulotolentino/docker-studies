@@ -20,22 +20,22 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className='App'>
+      <header className='App-header'>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor='nome'>Nome: </label>
-            <input id="nome" type="text" value={nome} onChange={e => setNome(e.target.value)} />
+            <input id='nome' type='text' value={nome} onChange={e => setNome(e.target.value)} />
           </div>
           <div>
             <label htmlFor='idade'>Idade: </label>
-            <input id="idade" type="text" value={idade} onChange={e => setIdade(e.target.value)} />
+            <input id='idade' type='text' value={idade} onChange={e => setIdade(e.target.value)} />
           </div>
           <div>
             <label htmlFor='uf'>UF: </label>
-            <input id="uf" type="text" value={uf} onChange={e => setUf(e.target.value)} />
+            <input id='uf' type='text' value={uf} onChange={e => setUf(e.target.value)} />
           </div>
-          <input type="submit" value={"Enviar"} />
+          <input type='submit' value='Enviar' />
         </form>
 
         <table>
