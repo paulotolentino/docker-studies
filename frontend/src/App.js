@@ -9,14 +9,22 @@ function App() {
   const [uf, setUf] = React.useState('');
   const [clientes, setClientes] = React.useState([])
 
-  React.useEffect(() => {
+  const getClientes = React.useCallback(() => {
     axios.get('http://127.1.0.12/clientes').then(res => {
       setClientes(res.data)
     })
   }, [])
 
-  const handleSubmit = () => {
+  React.useEffect(() => {
+    getClientes()
+  }, [getClientes])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log({nome, idade, uf})
+    axios.post('http://127.1.0.12/cliente', {nome, idade, uf}).then(() => {
+      getClientes()
+    })
   }
 
   return (
