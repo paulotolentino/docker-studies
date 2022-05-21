@@ -46,7 +46,7 @@ function App() {
           </thead>
           <tbody>
             {clientes.map(cliente => (
-            <tr>
+            <tr key={cliente.id}>
               <td>{cliente.nome}</td>
               <td>{cliente.idade}</td>
               <td>{cliente.uf}</td>
