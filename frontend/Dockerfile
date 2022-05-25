@@ -6,3 +6,4 @@ RUN yarn install --production
 RUN yarn build
 RUN yarn global add serve
 CMD ["serve", "-s", "build"]
+EXPOSE 3000
