@@ -4,7 +4,7 @@ async function connect() {
   if (global.connection) { return global.connection.connect(); }
 
   const pool = new Pool({
-    connectionString: 'postgres://postgres:postgres@127.1.0.13:5432/clientes',
+    connectionString: 'postgres://postgres:postgres@172.20.0.4:5432/clientes',
   });
 
   // apenas testando a conexão

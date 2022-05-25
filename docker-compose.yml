@@ -1,0 +1,32 @@
+version: '3'
+services:
+  nginx:
+    depends_on:
+      - frontend
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - "3050:80"
+  postgres:
+    build: 
+      context: ./database
+    volumes:
+      - postgres-data:/volume
+    restart: unless-stopped
+  backend:
+    build: 
+      context: ./backend
+    restart: unless-stopped
+    depends_on:
+      - postgres
+  frontend:
+    build: 
+      context: ./frontend
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    depends_on:
+      - backend
+volumes:
+  postgres-data:

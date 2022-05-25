@@ -10,7 +10,8 @@ function App() {
   const [clientes, setClientes] = React.useState([])
 
   const getClientes = React.useCallback(() => {
-    axios.get('http://127.1.0.12/clientes').then(res => {
+    axios.get('http://localhost:3001/clientes').then(res => {
+      console.log(res.data)
       setClientes(res.data)
     })
   }, [])
@@ -22,7 +23,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({nome, idade, uf})
-    axios.post('http://127.1.0.12/cliente', {nome, idade, uf}).then(() => {
+    axios.post('http://localhost:3001/cliente', {nome, idade, uf}).then(() => {
       getClientes()
     })
   }
@@ -48,9 +49,11 @@ function App() {
 
         <table>
           <thead>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>UF</th>
+            <tr>
+              <th>Nome</th>
+              <th>Idade</th>
+              <th>UF</th>
+            </tr>
           </thead>
           <tbody>
             {clientes.map(cliente => (
