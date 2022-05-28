@@ -5,13 +5,11 @@ async function connect() {
   if (global.connection) { return global.connection.connect(); }
 
   const {
-    DB_USER, DB_PASSWORD, DB_PORT, SERVER_IP,
+    DB_USER, DB_PASSWORD, DB_PORT, SERVER_IP, DB_NAME,
   } = process.env;
 
-  console.log('environment server ip', SERVER_IP);
-
   const pool = new Pool({
-    connectionString: `postgres://${DB_USER}:${DB_PASSWORD}@${SERVER_IP}:${DB_PORT}/postgres`,
+    connectionString: `postgres://${DB_USER}:${DB_PASSWORD}@${SERVER_IP}:${DB_PORT}/${DB_NAME}`,
   });
 
   // apenas testando a conexão

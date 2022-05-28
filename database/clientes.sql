@@ -11,6 +11,3 @@ CREATE TABLE public.clientes (
 	uf varchar(2) NOT NULL,
 	CONSTRAINT pk_id_cliente PRIMARY KEY (id)
 );
-
-INSERT INTO public.clientes (nome,idade,uf) VALUES
-	 ('Zézin',18,'SP');
