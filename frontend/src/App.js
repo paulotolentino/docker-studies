@@ -1,4 +1,4 @@
-import React  from 'react'
+import React, { useMemo }  from 'react'
 import axios from 'axios'
 import './App.css';
 
@@ -9,8 +9,11 @@ function App() {
   const [uf, setUf] = React.useState('');
   const [clientes, setClientes] = React.useState([])
 
+  const SERVER_IP = useMemo(() => process.env.REACT_APP_SERVER_IP, [])
+  const SERVER_PORT = useMemo(() => 3001, [])
+
   const getClientes = React.useCallback(() => {
-    axios.get('http://localhost:3001/clientes').then(res => {
+    axios.get(`${SERVER_IP}:${SERVER_PORT}/clientes`).then(res => {
       console.log(res.data)
       setClientes(res.data)
     })
@@ -23,7 +26,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({nome, idade, uf})
-    axios.post('http://localhost:3001/cliente', {nome, idade, uf}).then(() => {
+    axios.post(`${SERVER_IP}:${SERVER_PORT}/cliente`, {nome, idade, uf}).then(() => {
       getClientes()
     })
   }

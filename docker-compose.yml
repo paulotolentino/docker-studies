@@ -3,20 +3,24 @@ services:
   postgres:
     build: 
       context: ./database
+      dockerfile: Dockerfile
+      args:
+        - DB_USER=$DB_USER
+        - DB_PASSWORD=$DB_PASSWORD
+    ports:
+      - 54321:5432
     volumes:
-      - postgres-data:/volume
+      - ./postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
-    networks:
-      - private
+
   backend:
     build: 
       context: ./backend
+    ports:
+      - 3001:3001
     restart: unless-stopped
     depends_on:
       - postgres
-    networks:
-      - public
-      - private
   frontend:
     build: 
       context: ./frontend
@@ -25,10 +29,3 @@ services:
     restart: unless-stopped
     depends_on:
       - backend
-    networks:
-      - public
-volumes:
-  postgres-data:  
-networks:
-  public:
-  private:

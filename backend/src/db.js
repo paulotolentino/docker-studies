@@ -1,10 +1,17 @@
 const { Pool } = require('pg');
+require('dotenv').config();
 
 async function connect() {
   if (global.connection) { return global.connection.connect(); }
 
+  const {
+    DB_USER, DB_PASSWORD, DB_PORT, SERVER_IP,
+  } = process.env;
+
+  console.log('environment server ip', SERVER_IP);
+
   const pool = new Pool({
-    connectionString: 'postgres://postgres:postgres@172.20.0.4:5432/clientes',
+    connectionString: `postgres://${DB_USER}:${DB_PASSWORD}@${SERVER_IP}:${DB_PORT}/postgres`,
   });
 
   // apenas testando a conexão

@@ -13,4 +13,4 @@ CREATE TABLE public.clientes (
 );
 
 INSERT INTO public.clientes (nome,idade,uf) VALUES
-	 ('Zé',18,'SP');
+	 ('Zézin',18,'SP');

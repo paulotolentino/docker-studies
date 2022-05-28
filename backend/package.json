@@ -6,9 +6,13 @@
   "author": "Paulo Tolentino",
   "license": "MIT",
   "dependencies": {
-    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "pg": "^8.7.3"
+  },
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "start-remote": "node src/index.js"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
